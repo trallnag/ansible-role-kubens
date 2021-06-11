@@ -1,0 +1,55 @@
+- name: Check if `kubectl` exists
+  shell: |
+    if ! command -v kubectl &> /dev/null
+    then
+      echo "kubectl could not be found"
+      exit 1
+    fi
+  args:
+    executable: /bin/bash
+  changed_when: false
+
+- name: Download kubens version `{{ kubens_version }}`
+  become: true
+  get_url:
+    url: https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_linux_{{ kubens_arch }}.tar.gz
+    dest: /tmp/kubens-{{ kubens_version }}.tar.gz
+
+- name: Create dir for kubens archive
+  become: true
+  file:
+    path: /tmp/kubens-{{ kubens_version }}
+    state: directory
+
+- name: Unarchive kubens archive
+  become: true
+  unarchive:
+    src: /tmp/kubens-{{ kubens_version }}.tar.gz
+    dest: /tmp/kubens-{{ kubens_version }}/
+    remote_src: true
+
+- name: Copy file with owner and permissions
+  become: true
+  copy:
+    src: /tmp/kubens-{{ kubens_version }}/kubens
+    dest: /usr/local/bin/kubens-{{ kubens_version }}
+    mode: u=rwx,g=rx,o=rx
+    owner: root
+    group: root
+    remote_src: true
+
+- name: Create a symbolic link `kubens` to `kubens-{{ kubens_version }}`
+  become: true
+  file:
+    src: /usr/local/bin/kubens-{{ kubens_version }}
+    dest: /usr/local/bin/kubens
+    state: link
+
+- name: Download bash completion script and place it
+  become: true
+  get_url:
+    url: https://raw.githubusercontent.com/ahmetb/kubectx/v{{ kubens_version }}/completion/kubens.bash
+    dest: /usr/share/bash-completion/completions/kubens
+    mode: u=rw,g=r,o=r
+    owner: root
+    group: root

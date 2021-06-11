@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Tim Schwenke
+  namespace: trallnag
+  role_name: kubens
+  description: Install kubens on Linux.
+  license: Apache-2.0
+  company: none
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all

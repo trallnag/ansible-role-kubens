@@ -1,0 +1,18 @@
+argument_specs:
+  main:
+    short_description: The main entry point for the "{{ role_name }}" role.
+    options:
+      kubens_version:
+        type: str
+        required: false
+        default: 0.9.3
+        description: >-
+          Version to use. Only 0.9.0 upwards supported.
+
+      kubens_arch:
+        type: str
+        required: false
+        default: x86_64
+        choices: ["x86_64", "arm64", "armhf", "armv7", "ppc64le"]
+        description: >-
+          Architecture to use.
