@@ -2,9 +2,11 @@
 [![quality](https://img.shields.io/ansible/quality/55314)](https://galaxy.ansible.com/trallnag/kubens)
 [![downloads](https://img.shields.io/ansible/role/d/55314?label=downloads)](https://galaxy.ansible.com/trallnag/kubens)
 
-# kubens
+# Ansible Role `trallnag.kubens`
 
-Install kubens on Linux.
+Ansible role that installs [kubens][kubens] on Linux.
+
+[kubens]: https://github.com/ahmetb/kubectx
 
 Available on [Ansible Galaxy](https://galaxy.ansible.com/trallnag/kubens).
 
@@ -12,16 +14,17 @@ Available on [Ansible Galaxy](https://galaxy.ansible.com/trallnag/kubens).
 
 ```yaml
 kubens_version:
-  type: int
-  required: false
-  default: 0.9.3
-  description: >-
-    Version to use. Only 0.9.0 upwards supported.
-
-kubens_arch:
+  default: 0.9.4
   type: str
   required: false
+  description: >-
+    Version to use. Only 0.9.0 upwards supported. Check here:
+    <https://github.com/ahmetb/kubectx/releases>.
+
+kubens_arch:
   default: x86_64
+  type: str
+  required: false
   choices: ["x86_64", "arm64", "armhf", "armv7", "ppc64le"]
   description: >-
     Architecture to use.
@@ -38,15 +41,13 @@ kubens_arch:
   roles:
     - name: trallnag.kubens
       vars:
-        kubens_version: 0.9.3
+        kubens_version: 0.9.4
         kubens_arch: x86_64
 ```
 
 ## Special Requirements
 
-* Linux only.
-* Bash completion only.
-* `kubectl` must be installed.
+None.
 
 ## Special Dependencies
 

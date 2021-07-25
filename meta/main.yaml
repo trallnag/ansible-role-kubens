@@ -20,3 +20,9 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
+
+  galaxy_tags:
+    - kubernetes
+    - k8s
+    - linux
+    - bash

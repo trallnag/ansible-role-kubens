@@ -11,6 +11,15 @@ specification.
 
 * Nothing
 
+## [1.0.1] 2021-07-25
+
+### Changed
+
+* Bumped default to `0.9.4`.
+* Refactored to use handlers. Now only a single task runs if kubens is already
+  installed in the correct version.
+* Improved documentation.
+
 ## [1.0.0] 2021-06-04 
 
 * Intial release.
