@@ -4,7 +4,7 @@
 
 # Ansible Role `trallnag.kubens`
 
-Ansible role that installs [kubens][kubens] on Linux.
+Ansible role that installs [`kubens`][kubens] on Linux.
 
 [kubens]: https://github.com/ahmetb/kubectx
 
