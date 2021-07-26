@@ -11,6 +11,12 @@ specification.
 
 * Nothing
 
+## [1.0.2] 2021-07-26
+
+### Fixed
+
+* Added info that only versions `>= 0.9.4` are supported.
+
 ## [1.0.1] 2021-07-25
 
 ### Changed
