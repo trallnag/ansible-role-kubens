@@ -1,7 +1,7 @@
 galaxy_info:
   author: Tim Schwenke
   namespace: trallnag
-  role_name: kubectx
+  role_name: kubens
   description: Installs the Go version of kubens
   license: MIT
   company: none
