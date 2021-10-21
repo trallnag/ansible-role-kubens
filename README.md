@@ -1,10 +1,11 @@
+[![primary](https://github.com/trallnag/ansible-role-kubens/actions/workflows/primary.yaml/badge.svg)](https://github.com/trallnag/ansible-role-kubens/actions/workflows/primary.yaml)
 [![role](https://img.shields.io/ansible/role/55314)](https://galaxy.ansible.com/trallnag/kubens)
 [![quality](https://img.shields.io/ansible/quality/55314)](https://galaxy.ansible.com/trallnag/kubens)
 [![downloads](https://img.shields.io/ansible/role/d/55314?label=downloads)](https://galaxy.ansible.com/trallnag/kubens)
 
 # Ansible Role `trallnag.kubens`
 
-Ansible role that installs the Go version of [`kubens`](https://github.com/ahmetb/kubens).
+Ansible role that installs the Go version of [`kubens`](https://github.com/ahmetb/kubectx).
 
 Available on [Ansible Galaxy](https://galaxy.ansible.com/trallnag/kubens).
 
