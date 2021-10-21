@@ -4,33 +4,35 @@
 
 # Ansible Role `trallnag.kubens`
 
-Ansible role that installs [`kubens`][kubens] on Linux.
-
-[kubens]: https://github.com/ahmetb/kubectx
+Ansible role that installs the Go version of [`kubens`](https://github.com/ahmetb/kubens).
 
 Available on [Ansible Galaxy](https://galaxy.ansible.com/trallnag/kubens).
 
+## Scope
+
+In:
+
+* Install a single version of kubens to a global location.
+
+Out:
+
+* Set up tab completion.
+
+## Special Requirements
+
+None.
+
+## Special Dependencies
+
+None.
+
 ## Role Variables
 
-```yaml
-kubens_version:
-  default: 0.9.4
-  type: str
-  required: false
-  description: >-
-    Version to use. Only 0.9.4 upwards supported. Check here:
-    <https://github.com/ahmetb/kubectx/releases>.
+Check out [`meta/argument_specs.yaml`](meta/argument_specs.yaml).
 
-kubens_arch:
-  default: x86_64
-  type: str
-  required: false
-  choices: ["x86_64", "arm64", "armhf", "armv7", "ppc64le"]
-  description: >-
-    Architecture to use.
-```
+## Examples
 
-## Example Playbook
+Here is a minimal Playbook:
 
 ```yaml
 - name: Playbook
@@ -45,18 +47,11 @@ kubens_arch:
         kubens_arch: x86_64
 ```
 
-## Special Requirements
-
-None.
-
-## Special Dependencies
-
-None.
-
 ## License
 
-Apache-2.0
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
 
-## Author Information
+## Contact
 
-Trallnag
+    Tim Schwenke <tim.schwenke@trallnag.com>
+    ACCB8F306184BEEE49E7370E5DBF2C327E72AA3F

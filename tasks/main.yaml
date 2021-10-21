@@ -1,13 +1,63 @@
-- name: Check if kubens in the correct version is installed
-  shell: |
+# ------------------------------------------------------------------------------
+
+
+- name: Check kubens status
+  ansible.builtin.shell: |
     if [ "$(kubens --version)" != "{{ kubens_version }}" ]; then
-      echo status=changed
+      echo 'install required'
     fi
-  register: task
-  changed_when: "'status=changed' in task.stdout"
-  notify:
-    - "{{ role_name }} : Download archive to tmp"
-    - "{{ role_name }} : Create temporary dir for unpacked archive"
-    - "{{ role_name }} : Unarchive archive to temporary dir"
-    - "{{ role_name }} : Copy file with owner and permissions"
-    - "{{ role_name }} : Download bash completion script and place it"
+  register: kubens_status
+  changed_when: "'install required' in kubens_status.stdout"
+
+
+# ------------------------------------------------------------------------------
+
+
+- name: Download archive to tmp
+  when: "'install required' in kubens_status.stdout"
+  ansible.builtin.get_url:
+    url: https://github.com/ahmetb/kubens/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_linux_{{ kubens_arch }}.tar.gz
+    dest: /tmp/kubens-{{ kubens_version }}.tar.gz
+    force: true
+  become: true
+
+- name: Create temporary dir for unpacked archive
+  when: "'install required' in kubens_status.stdout"
+  ansible.builtin.shell: |
+    rm -rf /tmp/kubens-{{ kubens_version }} || true
+    mkdir -p /tmp/kubens-{{ kubens_version }}
+  args: {warn: false}
+  become: true
+
+- name: Unarchive archive to temporary dir
+  when: "'install required' in kubens_status.stdout"
+  ansible.builtin.unarchive:
+    src: /tmp/kubens-{{ kubens_version }}.tar.gz
+    dest: /tmp/kubens-{{ kubens_version }}/
+    remote_src: true
+  become: true
+
+- name: Copy file with owner and permissions
+  when: "'install required' in kubens_status.stdout"
+  ansible.builtin.copy:
+    src: /tmp/kubens-{{ kubens_version }}/kubens
+    dest: /usr/local/bin/kubens
+    mode: u=rwx,g=rx,o=rx
+    owner: root
+    group: root
+    remote_src: true
+  become: true
+
+
+# ------------------------------------------------------------------------------
+
+
+- name: Ensure correct version of kubens is installed
+  ansible.builtin.shell: |
+    if [ "$(kubens --version)" != "{{ kubens_version }}" ]; then
+      exit 1
+    fi
+  changed_when: false
+
+
+# ------------------------------------------------------------------------------
