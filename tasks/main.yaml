@@ -16,7 +16,7 @@
 - name: Download archive to tmp
   when: "'install required' in kubens_status.stdout"
   ansible.builtin.get_url:
-    url: https://github.com/ahmetb/kubens/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_linux_{{ kubens_arch }}.tar.gz
+    url: https://github.com/ahmetb/kubectx/releases/download/v{{ kubens_version }}/kubens_v{{ kubens_version }}_linux_{{ kubens_arch }}.tar.gz
     dest: /tmp/kubens-{{ kubens_version }}.tar.gz
     force: true
   become: true
