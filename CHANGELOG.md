@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.0.4](https://github.com/trallnag/ansible-role-kubens/compare/1.0.3...1.0.4) (2021-10-21)
+
+
+### 📝 Documentation
+
+* **readme:** Add badge and fix link ([2462288](https://github.com/trallnag/ansible-role-kubens/commit/2462288c415bb8dd17a7bb2993d4a2d1ccda16bc))
+
+
+### 🐛 Bug Fixes
+
+* Incorrect github repo link leading to 404 ([11ed597](https://github.com/trallnag/ansible-role-kubens/commit/11ed5973ae67d3315fa93ee1b294b63f62d32e82))
+
 ### [1.0.3](https://github.com/trallnag/ansible-role-kubens/compare/1.0.2...1.0.3) (2021-10-21)
 
 
