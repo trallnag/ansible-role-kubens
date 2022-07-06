@@ -2,12 +2,12 @@
 
 ⚠️ **IMPORTANT NOTICE** ⚠️
 
-**Not maintained anymore. Instead of using a dedicated Ansible Role I switched to installing kubectx / kubens via asdf.**
+**Repository is archived and unmaintained.** I personally don't need it anymore,
+as instead of using a dedicated Ansible Role I switched to installing
+kubectx / kubens via asdf. So no reason to keep this role around.
 
-- **<https://github.com/trallnag/asdf-kubectx>**
-- **<https://github.com/trallnag/ansible-role-asdf-plugin>**
-
-⚠️ **IMPORTANT NOTICE** ⚠️
+- <https://github.com/trallnag/asdf-kubectx>
+- <https://github.com/trallnag/ansible-role-asdf-plugin>
 
 ---
 
